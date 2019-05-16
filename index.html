@@ -1,68 +1,105 @@
 <!doctype html>
 
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>Projectile Movement</title>
-    </head>
-    <body>
-        <img src="img/JumbotronImg.jpg" alt="" class="jumbotron-fluid w-100">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        <div class="container my-5">
-            <h2>Projectiles</h2>
-            <p>A projectile is a object that is, at it's core, affected by initial velocity and gravity. Basic projectiles on Earth follow a parabola-like trajectory.</p>
-    
-            <h2>Projectiles in Games</h2>
-            <p>Projectiles in video games used to be raycasts, which are straight lines that go from point A to point B in an instant. If this raycast collides with a wall, player, or some other object, it will calculate whether it should deal damage, knockback, or something else. Raycasts hold 5 basic pieces of information, the origin, direction, hitInfo, distance, and LayerMask.</p>
-            <ul>
-                <li>Origin: Where the raycast starts</li>
-                <li>Direction: The way the raycast is projected at</li>
-                <li>hitInfo: Gives information as to what is being hit</li>
-                <li>Distance: How far the raycast is to be projected before it stops</li>
-                <li>LayerMask: Allows the raycast to pass through some objects while colliding with others</li>
-            </ul>
-            <p>Games are now able to utilize projectile movement, which simulates initial velocity, gravity, air resistance, homing, etc. This is done using rigidbodies and continually applying forces as it is needed. Now gamers have to lead their shots so that their bullets can land on their target, thus, adding a layer of complexity in the shooter genre of games. You can also add optional layers of complexity by adding the velocity of the player as well as the initial velocity of the bullet so that you can make bullets move in interesting ways. There’s also homing, in which a constant force is always being in the direction of the target. As well as, making the projectile moving slower or grow larger as it is in the air.</p>
+    <title>Projectile Movement</title>
+</head>
 
-            <h2>Implementation</h2>
-            <p>Through the work of physicist and programmers alike and through the exponentional increase in the computing capablies of today's hardware, we are able to progress from raycasts to rigidbodies. That's to say, many games still use raycasts whether it is for lighting or because having such complexity may not be a main part of the game.</p>
-            <p>There are 7 basic trajectory formulas that, as the names suggests, can give you different types of information as to where the projectile is estimated to land at, how long it will take before it collides with the ground, if there's anything intercepting its path, etc.</p>
-            <img src="https://latex.codecogs.com/gif.latex?Horizontal\;&space;distance,x=V_{x}t" alt="" class="border border-secondary rounded p-2 my-1">
-            <br>
-            <img src="https://latex.codecogs.com/gif.latex?Horizontal\;&space;distance,V_{x}=V_{x_{o}}" alt="" class="border border-secondary rounded p-2 my-1">
-            <br>
-            <img src="https://latex.codecogs.com/gif.latex?Vertical\;&space;distance,y=V_{yo}t-\frac{1}{2}gt^{2}" alt="" class="border border-secondary rounded p-2 my-1">
-            <br>
-            <img src="https://latex.codecogs.com/gif.latex?Vertical\;&space;Velocity,V_{y}=V_{yo}-gt" alt="" class="border border-secondary rounded p-2 my-1">
-            <br>
-            <img src="https://latex.codecogs.com/gif.latex?Time&space;of&space;Flight,&space;t&space;=\frac{2v_{0sin\theta}}{g}" alt="" class="border border-secondary rounded p-2 my-1">
-            <br>
-            <img src="https://latex.codecogs.com/gif.latex?\large&space;Maximum\;&space;height\;&space;reached,&space;H&space;=\frac{v^{2_{0sin^{2\theta}}}}{2g}" alt="" class="border border-secondary rounded p-2 my-1">
-            <br>
-            <img src="https://latex.codecogs.com/gif.latex?\large&space;Horizontal&space;range,R=\frac{v^{2_{0}sin2\theta}}{g}" alt="" class="border border-secondary rounded p-2 my-1">
+<body>
+    <img src="img/JumbotronImg.jpg" alt="" class="jumbotron-fluid w-100">
+
+    <div class="container my-5">
+        <h2>Projectiles</h2>
+        <p>A projectile is a object that is, at it's core, affected by initial velocity and gravity. Basic projectiles
+            on Earth follow a parabola-like trajectory.</p>
+
+        <h2>Projectiles in Games</h2>
+        <p>Projectiles in video games used to be raycasts, which are straight lines that go from point A to point B in
+            an instant. If this raycast collides with a wall, player, or some other object, it will calculate whether it
+            should deal damage, knockback, or something else. Raycasts hold 5 basic pieces of information, the origin,
+            direction, hitInfo, distance, and LayerMask.</p>
+        <ul>
+            <li>Origin: Where the raycast starts</li>
+            <li>Direction: The way the raycast is projected at</li>
+            <li>hitInfo: Gives information as to what is being hit</li>
+            <li>Distance: How far the raycast is to be projected before it stops</li>
+            <li>LayerMask: Allows the raycast to pass through some objects while colliding with others</li>
+        </ul>
+        <p>Games are now able to utilize projectile movement, which simulates initial velocity, gravity, air resistance,
+            homing, etc. This is done using rigidbodies and continually applying forces as it is needed. Now gamers have
+            to lead their shots so that their bullets can land on their target, thus, adding a layer of complexity in
+            the shooter genre of games. You can also add optional layers of complexity by adding the velocity of the
+            player as well as the initial velocity of the bullet so that you can make bullets move in interesting ways.
+            There’s also homing, in which a constant force is always being in the direction of the target. As well as,
+            making the projectile moving slower or grow larger as it is in the air.</p>
+
+        <h2>Implementation</h2>
+        <p>Through the work of physicist and programmers alike and through the exponentional increase in the computing
+            capablies of today's hardware, we are able to progress from raycasts to rigidbodies. That's to say, many
+            games still use raycasts whether it is for lighting or because having such complexity may not be a main part
+            of the game.</p>
+        <p>There are 7 basic trajectory formulas that, as the names suggests, can give you different types of
+            information as to where the projectile is estimated to land at, how long it will take before it collides
+            with the ground, if there's anything intercepting its path, etc.</p>
+        <img src="https://latex.codecogs.com/gif.latex?Horizontal\;&space;distance,x=V_{x}t" alt=""
+            class="border border-secondary rounded p-2 my-1">
+        <br>
+        <img src="https://latex.codecogs.com/gif.latex?Horizontal\;&space;distance,V_{x}=V_{x_{o}}" alt=""
+            class="border border-secondary rounded p-2 my-1">
+        <br>
+        <img src="https://latex.codecogs.com/gif.latex?Vertical\;&space;distance,y=V_{yo}t-\frac{1}{2}gt^{2}" alt=""
+            class="border border-secondary rounded p-2 my-1">
+        <br>
+        <img src="https://latex.codecogs.com/gif.latex?Vertical\;&space;Velocity,V_{y}=V_{yo}-gt" alt=""
+            class="border border-secondary rounded p-2 my-1">
+        <br>
+        <img src="https://latex.codecogs.com/gif.latex?Time&space;of&space;Flight,&space;t&space;=\frac{2v_{0sin\theta}}{g}"
+            alt="" class="border border-secondary rounded p-2 my-1">
+        <br>
+        <img src="https://latex.codecogs.com/gif.latex?\large&space;Maximum\;&space;height\;&space;reached,&space;H&space;=\frac{v^{2_{0sin^{2\theta}}}}{2g}"
+            alt="" class="border border-secondary rounded p-2 my-1">
+        <br>
+        <img src="https://latex.codecogs.com/gif.latex?\large&space;Horizontal&space;range,R=\frac{v^{2_{0}sin2\theta}}{g}"
+            alt="" class="border border-secondary rounded p-2 my-1">
+    </div>
+
+    <footer class="bg-dark p-4">
+        <div>
+            <a href="">GITHUB</a>
         </div>
+        <div>
+            <p class="text-secondary m-1">Website created with <a class="text-white-50" href="https://getbootstrap.com"
+                    target="_blank">Bootstrap 4</a></p>
+            <p class="text-secondary m-1">Jumbotron image from <a class="text-white-50"
+                    href="https://wall.alphacoders.com/big.php?i=810343" target="_blank">Wallpaper Abyss</a></p>
+            <p class="text-secondary m-1">Projectile information from <a class="text-white-50"
+                    href="https://www.physicsclassroom.com/Class/vectors/U3L2a.cfm" target="_blank">the Physics
+                    Classroom</a></p>
+            <p class="text-secondary m-1">Projectile motion formulas from <a class="text-white-50"
+                    href="https://byjus.com/projectile-motion-formula/" target="_blank">Byju's The Learning App</a></p>
+        </div>
+    </footer>
 
-        <footer class="bg-dark p-4">
-            <div>
-                <a href="">GITHUB</a>
-            </div>
-            <div>
-                <p class="text-secondary m-1">Website created with <a class="text-white-50" href="https://getbootstrap.com" target="_blank">Bootstrap 4</a></p>
-                <p class="text-secondary m-1">Jumbotron image from <a class="text-white-50" href="https://wall.alphacoders.com/big.php?i=810343" target="_blank">Wallpaper Abyss</a></p>
-                <p class="text-secondary m-1">Projectile information from <a class="text-white-50" href="https://www.physicsclassroom.com/Class/vectors/U3L2a.cfm" target="_blank">the Physics Classroom</a></p>
-                <p class="text-secondary m-1">Projectile motion formulas from <a class="text-white-50" href="https://byjus.com/projectile-motion-formula/" target="_blank">Byju's The Learning App</a></p>
-            </div>
-        </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
 
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </body>
 </html>
