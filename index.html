@@ -16,22 +16,22 @@
 
         <div class="container my-5">
             <h2>Projectiles</h2>
-            <p>A projectile is a object that is affected by initial velocity and gravity, among other things. Projectiles on Earth follow a parabola-like trajectory.</p>
+            <p>A projectile is a object that is, at it's core, affected by initial velocity and gravity. Basic projectiles on Earth follow a parabola-like trajectory.</p>
     
             <h2>Projectiles in Games</h2>
             <p>Projectiles in video games used to be raycasts, which are straight lines that go from point A to point B in an instant. If this raycast collides with a wall, player, or some other object, it will calculate whether it should deal damage, knockback, or something else. Raycasts hold 5 basic pieces of information, the origin, direction, hitInfo, distance, and LayerMask.</p>
             <ul>
                 <li>Origin: Where the raycast starts</li>
-                <li>Direction: The which way the raycast is projected at</li>
+                <li>Direction: The way the raycast is projected at</li>
                 <li>hitInfo: Gives information as to what is being hit</li>
-                <li>Distance: tells the raycast how far it should project before it stops</li>
-                <li>LayerMask: allows the raycast to go through some objects while colliding with others</li>
+                <li>Distance: How far the raycast is to be projected before it stops</li>
+                <li>LayerMask: Allows the raycast to pass through some objects while colliding with others</li>
             </ul>
-            <p>Now games utilize projectile movement which simulates initial velocity, gravity, air resistance, and homing. This is done using rigidbodies and continually applying forces as it is needed. Now gamers have to lead their shots so that their bullets can land on their target, thus, adding another layer of complexity in the shooter genre of games. You can also add optional layers of complexity by adding the velocity of the player as well as the initial of the velocity you can make bullets move in interesting ways. There’s also homing in which a constant force is always being in the direction of the target. As well as, making the projectile moving slower or grow larger as it is in the air.</p>
+            <p>Games are now able to utilize projectile movement, which simulates initial velocity, gravity, air resistance, homing, etc. This is done using rigidbodies and continually applying forces as it is needed. Now gamers have to lead their shots so that their bullets can land on their target, thus, adding a layer of complexity in the shooter genre of games. You can also add optional layers of complexity by adding the velocity of the player as well as the initial velocity of the bullet so that you can make bullets move in interesting ways. There’s also homing, in which a constant force is always being in the direction of the target. As well as, making the projectile moving slower or grow larger as it is in the air.</p>
 
             <h2>Implementation</h2>
             <p>Through the work of physicist and programmers alike and through the exponentional increase in the computing capablies of today's hardware, we are able to progress from raycasts to rigidbodies. That's to say, many games still use raycasts whether it is for lighting or because having such complexity may not be a main part of the game.</p>
-            <p>There are 7 basic trajectory formulas that, as the name suggests, can give you different types of information as to where the projectile is estimated to land at, how long it will take before it collides with the ground, and if there's anything intercepting its path.</p>
+            <p>There are 7 basic trajectory formulas that, as the names suggests, can give you different types of information as to where the projectile is estimated to land at, how long it will take before it collides with the ground, if there's anything intercepting its path, etc.</p>
             <img src="https://latex.codecogs.com/gif.latex?Horizontal\;&space;distance,x=V_{x}t" alt="" class="border border-secondary rounded p-2 my-1">
             <br>
             <img src="https://latex.codecogs.com/gif.latex?Horizontal\;&space;distance,V_{x}=V_{x_{o}}" alt="" class="border border-secondary rounded p-2 my-1">
